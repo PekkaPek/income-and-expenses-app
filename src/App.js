@@ -41,9 +41,9 @@ class App extends React.Component {
         <h1>{this.state.showEntryType==='expense' ? 'Menot' : 'Tulot'}</h1>
         <form className="form--add-entry">
           <label>Päivämäärä</label>
-          <input type="date" onChange={this.updateDate}></input>
+          <input type="date" value={this.state.newEntryDate} onChange={this.updateDate}></input>
           <label>Summa</label>
-          <input type="text" onChange={this.updateAmount}></input>
+          <input type="text" value={this.state.newEntryAmount} onChange={this.updateAmount}></input>
           <br></br>
           <input type="submit" value="+ Lisää"></input>
         </form>
