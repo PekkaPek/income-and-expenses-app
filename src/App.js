@@ -35,6 +35,10 @@ class App extends React.Component {
           <br></br>
           <input type="submit" value="+ Lisää"></input>
         </form>
+        <table>
+          <tr><th>Päivämäärä</th><th>Summa</th></tr>
+          <tr><td>12.12.18</td><td>4,20 €</td></tr>
+        </table>
       </div>
     )
   }
