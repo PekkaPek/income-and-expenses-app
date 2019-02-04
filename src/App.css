@@ -1,0 +1,17 @@
+h1 {
+  text-align: center;
+}
+
+label {
+  display: block;
+}
+
+.link {
+  color: blue;
+  text-decoration: underline;
+}
+
+.link:hover {
+  color: blueviolet;
+  cursor: pointer;
+}
