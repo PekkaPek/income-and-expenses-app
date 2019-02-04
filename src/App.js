@@ -1,4 +1,5 @@
 import React from 'react'
+import './reset.css'
 import './App.css'
 
 class App extends React.Component {
