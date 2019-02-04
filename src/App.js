@@ -18,6 +18,16 @@ class App extends React.Component {
     }
   }
 
+  updateDate = (event) => {
+    console.log('event.targe.value:', event.target.value)
+    this.setState({newEntryDate: event.target.value})
+  }
+
+  updateAmount = (event) => {
+    console.log('event.targe.value:', event.target.value)
+    this.setState({newEntryAmount: event.target.value})
+  }
+
   render() {
     return (
       <div>
@@ -29,9 +39,9 @@ class App extends React.Component {
         <h1>{this.state.showEntryType==='expense' ? 'Menot' : 'Tulot'}</h1>
         <form className="form--add-entry">
           <label>Päivämäärä</label>
-          <input type="date"></input>
+          <input type="date" onChange={this.updateDate}></input>
           <label>Summa</label>
-          <input type="text"></input>
+          <input type="text" onChange={this.updateAmount}></input>
           <br></br>
           <input type="submit" value="+ Lisää"></input>
         </form>
