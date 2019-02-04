@@ -9,14 +9,23 @@ class App extends React.Component {
       entryType: 'expense'
     }
   }
+
+  toggleEntryType = (event) => {
+    if(this.state.entryType === 'expense') {
+      this.setState({ entryType: 'income'})
+    } else {
+      this.setState({ entryType: 'expense'})
+    }
+  }
+
   render() {
     return (
       <div>
         <nav>
-          <div className={this.state.entryType==='expense' ? 'link' : null}>Tulot</div>
-          <div className={this.state.entryType==='income' ? 'link' : null}>Menot</div>
+          <div className={this.state.entryType==='expense' ? 'link' : null} onClick={this.state.entryType==='expense' ? this.toggleEntryType : null}>Tulot</div>
+          <div className={this.state.entryType==='income' ? 'link' : null} onClick={this.state.entryType==='income' ? this.toggleEntryType : null}>Menot</div>
         </nav>
-
+        
         <h1>{this.state.entryType==='expense' ? 'Menot' : 'Tulot'}</h1>
         <form className="form--add-entry">
           <label>Päivämäärä</label>
