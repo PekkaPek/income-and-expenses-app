@@ -6,15 +6,15 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      entryType: 'expense'
+      showEntryType: 'expense'
     }
   }
 
-  toggleEntryType = (event) => {
-    if(this.state.entryType === 'expense') {
-      this.setState({ entryType: 'income'})
+  toggleShowEntryType = (event) => {
+    if(this.state.showEntryType === 'expense') {
+      this.setState({ showEntryType: 'income'})
     } else {
-      this.setState({ entryType: 'expense'})
+      this.setState({ showEntryType: 'expense'})
     }
   }
 
@@ -22,11 +22,11 @@ class App extends React.Component {
     return (
       <div>
         <nav>
-          <div className={this.state.entryType==='expense' ? 'link' : null} onClick={this.state.entryType==='expense' ? this.toggleEntryType : null}>Tulot</div>
-          <div className={this.state.entryType==='income' ? 'link' : null} onClick={this.state.entryType==='income' ? this.toggleEntryType : null}>Menot</div>
+          <div className={this.state.showEntryType==='expense' ? 'link' : null} onClick={this.state.showEntryType==='expense' ? this.toggleShowEntryType : null}>Tulot</div>
+          <div className={this.state.showEntryType==='income' ? 'link' : null} onClick={this.state.showEntryType==='income' ? this.toggleShowEntryType : null}>Menot</div>
         </nav>
         
-        <h1>{this.state.entryType==='expense' ? 'Menot' : 'Tulot'}</h1>
+        <h1>{this.state.showEntryType==='expense' ? 'Menot' : 'Tulot'}</h1>
         <form className="form--add-entry">
           <label>Päivämäärä</label>
           <input type="date"></input>
