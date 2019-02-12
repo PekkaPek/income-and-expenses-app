@@ -10,6 +10,23 @@ class App extends React.Component {
     super(props)
     this.state = {
       showEntryType: 'expense',
+      entries: [
+        {
+        id: 1,
+        type: 'expense',
+        date: '2019-01-04',
+        amount: '2,40'},
+        {
+        id: 2,
+        type: 'expense',
+        date: '2019-01-05',
+        amount: '1'},
+        {
+        id: 3,
+        type: 'income',
+        date: '2019-01-07',
+        amount: '50'}
+      ],
       newEntryDate: '',
       newEntryAmount: ''
     }
@@ -40,7 +57,7 @@ class App extends React.Component {
         
         <h1>{this.state.showEntryType==='expense' ? 'Menot' : 'Tulot'}</h1>
         <AddEntryForm newEntryDate={this.state.newEntryDate} newEntryAmount={this.state.newEntryAmount} updateDate={this.updateDate} updateAmount={this.updateAmount} />
-        <EntriesTable />
+        <EntriesTable entries={this.state.entries} showEntryType={this.state.showEntryType} />
       </div>
     )
   }
