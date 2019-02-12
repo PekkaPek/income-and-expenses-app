@@ -1,6 +1,9 @@
 import React from 'react'
 import './reset.css'
 import './App.css'
+import Navigation from './components/Navigation'
+import AddEntryForm from './components/AddEntryForm';
+import EntriesTable from './components/EntriesTable';
 
 class App extends React.Component {
   constructor(props) {
@@ -27,35 +30,20 @@ class App extends React.Component {
 
   updateAmount = (event) => {
     console.log('event.targe.value:', event.target.value)
-    this.setState({newEntryAmount: event.target.value})
+    this.setState({newEntryAmount: event.target.value + '€'})
   }
 
   render() {
     return (
       <div>
-        <nav>
-          <div className={this.state.showEntryType==='expense' ? 'link' : null} onClick={this.state.showEntryType==='expense' ? this.toggleShowEntryType : null}>Tulot</div>
-          <div className={this.state.showEntryType==='income' ? 'link' : null} onClick={this.state.showEntryType==='income' ? this.toggleShowEntryType : null}>Menot</div>
-        </nav>
+        <Navigation showEntryType={this.state.showEntryType} toggleShowEntryType={this.toggleShowEntryType} />
         
         <h1>{this.state.showEntryType==='expense' ? 'Menot' : 'Tulot'}</h1>
-        <form className="form--add-entry">
-          <label>Päivämäärä</label>
-          <input type="date" value={this.state.newEntryDate} onChange={this.updateDate}></input>
-          <label>Summa</label>
-          <input type="text" value={this.state.newEntryAmount} onChange={this.updateAmount}></input>
-          <br></br>
-          <input type="submit" value="+ Lisää"></input>
-        </form>
-        <table>
-          <tbody>
-            <tr><th>Päivämäärä</th><th>Summa</th></tr>
-            <tr><td>12.12.18</td><td>4,20 €</td></tr>
-          </tbody>
-        </table>
+        <AddEntryForm newEntryDate={this.state.newEntryDate} newEntryAmount={this.state.newEntryAmount} updateDate={this.updateDate} updateAmount={this.updateAmount} />
+        <EntriesTable />
       </div>
     )
   }
 }
 
-export default App;
+export default App
