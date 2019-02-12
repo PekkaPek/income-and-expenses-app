@@ -27,6 +27,7 @@ class App extends React.Component {
         date: '2019-01-07',
         amount: '50'}
       ],
+      nextId: 4,
       newEntryDate: '',
       newEntryAmount: ''
     }
@@ -47,7 +48,24 @@ class App extends React.Component {
 
   updateAmount = (event) => {
     console.log('event.targe.value:', event.target.value)
-    this.setState({newEntryAmount: event.target.value + '€'})
+    this.setState({newEntryAmount: event.target.value})
+  }
+
+  addEntry = (event) => {
+    event.preventDefault()
+    console.log('event.target.value:', event.target.value)
+    const newEntry = {
+      id: this.state.nextId,
+      type: this.state.showEntryType,
+      date: this.state.newEntryDate,
+      amount: this.state.newEntryAmount
+    }
+    this.setState( {
+      entries: this.state.entries.concat(newEntry),
+      nextId:  this.state.nextId + 1,
+      newEntryDate: '',
+      newEntryAmount: ''
+    })
   }
 
   render() {
@@ -56,7 +74,7 @@ class App extends React.Component {
         <Navigation showEntryType={this.state.showEntryType} toggleShowEntryType={this.toggleShowEntryType} />
         
         <h1>{this.state.showEntryType==='expense' ? 'Menot' : 'Tulot'}</h1>
-        <AddEntryForm newEntryDate={this.state.newEntryDate} newEntryAmount={this.state.newEntryAmount} updateDate={this.updateDate} updateAmount={this.updateAmount} />
+        <AddEntryForm newEntryDate={this.state.newEntryDate} newEntryAmount={this.state.newEntryAmount} updateDate={this.updateDate} updateAmount={this.updateAmount} addEntry={this.addEntry} />
         <EntriesTable entries={this.state.entries} showEntryType={this.state.showEntryType} />
       </div>
     )
