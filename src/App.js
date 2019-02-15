@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 import './reset.css'
 import './App.css'
 import Navigation from './components/Navigation'
@@ -10,24 +11,8 @@ class App extends React.Component {
     super(props)
     this.state = {
       showEntryType: 'expense',
-      entries: [
-        {
-        id: 1,
-        type: 'expense',
-        date: '2019-01-04',
-        amount: '2,40'},
-        {
-        id: 2,
-        type: 'expense',
-        date: '2019-01-05',
-        amount: '1'},
-        {
-        id: 3,
-        type: 'income',
-        date: '2019-01-07',
-        amount: '50'}
-      ],
-      nextId: 4,
+      entries: [],
+      nextId: 5,
       newEntryDate: '',
       newEntryAmount: ''
     }
@@ -66,6 +51,14 @@ class App extends React.Component {
       newEntryDate: '',
       newEntryAmount: ''
     })
+  }
+
+  componentDidMount() {
+    axios.get('http://localhost:3001/entries')
+      .then(response => {
+        console.log('response.data:', response.data)
+        this.setState( {entries: response.data} )
+      })
   }
 
   render() {
