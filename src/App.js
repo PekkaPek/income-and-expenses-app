@@ -38,19 +38,19 @@ class App extends React.Component {
 
   addEntry = (event) => {
     event.preventDefault()
-    console.log('event.target.value:', event.target.value)
     const newEntry = {
-      id: this.state.nextId,
       type: this.state.showEntryType,
       date: this.state.newEntryDate,
       amount: this.state.newEntryAmount
     }
-    this.setState( {
-      entries: this.state.entries.concat(newEntry),
-      nextId:  this.state.nextId + 1,
-      newEntryDate: '',
-      newEntryAmount: ''
-    })
+    axios.post('http://localhost:3001/entries', newEntry)
+      .then(response => {
+        this.setState({
+          entries: this.state.entries.concat(response.data),
+          date: '',
+          amount: ''
+        })
+      })
   }
 
   componentDidMount() {
