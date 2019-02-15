@@ -4,5 +4,6 @@
 # misc
 .DS_Store
 .env
+db.json
 
 npm-debug.log*
