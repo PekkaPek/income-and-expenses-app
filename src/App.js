@@ -16,6 +16,11 @@ class App extends React.Component {
       newEntryDate: '',
       newEntryAmount: ''
     }
+    axios.get('http://localhost:3001/entries')
+    .then(response => {
+      console.log('response.data:', response.data)
+      this.setState( {entries: response.data} )
+    })
   }
 
   toggleShowEntryType = (event) => {
@@ -50,14 +55,6 @@ class App extends React.Component {
           date: '',
           amount: ''
         })
-      })
-  }
-
-  componentDidMount() {
-    axios.get('http://localhost:3001/entries')
-      .then(response => {
-        console.log('response.data:', response.data)
-        this.setState( {entries: response.data} )
       })
   }
 
