@@ -1,5 +1,5 @@
 import React from 'react'
-import axios from 'axios'
+import entryService from './services/entries'
 import './reset.css'
 import './App.css'
 import Navigation from './components/Navigation'
@@ -12,15 +12,12 @@ class App extends React.Component {
     this.state = {
       showEntryType: 'expense',
       entries: [],
-      nextId: 5,
       newEntryDate: '',
       newEntryAmount: ''
     }
-    axios.get('http://localhost:3001/entries')
-    .then(response => {
-      console.log('response.data:', response.data)
-      this.setState( {entries: response.data} )
-    })
+    entryService
+      .getAll()
+      .then(entries => this.setState({entries}))
   }
 
   toggleShowEntryType = (event) => {
@@ -48,12 +45,13 @@ class App extends React.Component {
       date: this.state.newEntryDate,
       amount: this.state.newEntryAmount
     }
-    axios.post('http://localhost:3001/entries', newEntry)
-      .then(response => {
+    entryService
+      .create(newEntry)
+      .then(createdEntry => {
         this.setState({
-          entries: this.state.entries.concat(response.data),
-          date: '',
-          amount: ''
+          entries: this.state.entries.concat(createdEntry),
+          newEntryDate: '',
+          newEntryAmount: ''
         })
       })
   }
