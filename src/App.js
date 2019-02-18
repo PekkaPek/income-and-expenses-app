@@ -5,6 +5,7 @@ import './App.css'
 import Navigation from './components/Navigation'
 import AddEntryForm from './components/AddEntryForm';
 import EntriesTable from './components/EntriesTable';
+import ModifyEntryModal from './components/ModifyEntryModal'
 
 class App extends React.Component {
   constructor(props) {
@@ -13,7 +14,10 @@ class App extends React.Component {
       showEntryType: 'expense',
       entries: [],
       newEntryDate: '',
-      newEntryAmount: ''
+      newEntryAmount: '',
+      entryDateToModify: '',
+      entryAmountToModify: '',
+      showModifyEntryModal: false
     }
     entryService
       .getAll()
@@ -56,14 +60,28 @@ class App extends React.Component {
       })
   }
 
+  toggleShowModifyEntryModal = () => {
+    this.setState({showModifyEntryModal: !this.state.showModifyEntryModal})
+  }
+
+  populateModifyEntryModal = (entry) => {
+    return () => (
+      this.setState({
+        entryDateToModify: entry.date,
+        entryAmountToModify: entry.amount
+      })
+    )
+  }
+
   render() {
     return (
       <div>
         <Navigation showEntryType={this.state.showEntryType} toggleShowEntryType={this.toggleShowEntryType} />
         
         <h1>{this.state.showEntryType==='expense' ? 'Menot' : 'Tulot'}</h1>
-        <AddEntryForm newEntryDate={this.state.newEntryDate} newEntryAmount={this.state.newEntryAmount} updateDate={this.updateDate} updateAmount={this.updateAmount} addEntry={this.addEntry} />
-        <EntriesTable entries={this.state.entries} showEntryType={this.state.showEntryType} />
+        <AddEntryForm newEntryDate={this.state.newEntryDate} newEntryAmount={this.state.newEntryAmount} updateDate={this.updateDate} updateAmount={this.updateAmount} addEntry={this.addEntry} showModifyModal={this.showModifyModal} />
+        <EntriesTable entries={this.state.entries} showEntryType={this.state.showEntryType} populateModifyEntryModal={this.populateModifyEntryModal} />
+        <ModifyEntryModal entryDateToModify={this.state.entryDateToModify} entryAmountToModify={this.state.entryAmountToModify}/>
       </div>
     )
   }
