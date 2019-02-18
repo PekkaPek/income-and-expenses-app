@@ -15,8 +15,7 @@ class App extends React.Component {
       entries: [],
       newEntryDate: '',
       newEntryAmount: '',
-      entryDateToModify: '',
-      entryAmountToModify: '',
+      entryToBeModified: {},
       showModifyEntryModal: false
     }
     entryService
@@ -67,8 +66,7 @@ class App extends React.Component {
   populateModifyEntryModal = (entry) => {
     return () => (
       this.setState({
-        entryDateToModify: entry.date,
-        entryAmountToModify: entry.amount
+        entryToBeModified: entry
       })
     )
   }
@@ -81,7 +79,7 @@ class App extends React.Component {
         <h1>{this.state.showEntryType==='expense' ? 'Menot' : 'Tulot'}</h1>
         <AddEntryForm newEntryDate={this.state.newEntryDate} newEntryAmount={this.state.newEntryAmount} updateDate={this.updateDate} updateAmount={this.updateAmount} addEntry={this.addEntry} showModifyModal={this.showModifyModal} />
         <EntriesTable entries={this.state.entries} showEntryType={this.state.showEntryType} populateModifyEntryModal={this.populateModifyEntryModal} />
-        <ModifyEntryModal entryDateToModify={this.state.entryDateToModify} entryAmountToModify={this.state.entryAmountToModify}/>
+        <ModifyEntryModal entryToBeModified={this.state.entryToBeModified}/>
       </div>
     )
   }
