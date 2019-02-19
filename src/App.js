@@ -64,11 +64,24 @@ class App extends React.Component {
   }
 
   populateModifyEntryModal = (entry) => {
-    return () => (
+    return () => {
+      const entryCopy = {...entry}
       this.setState({
-        entryToBeModified: entry
+        entryToBeModified: entryCopy
       })
-    )
+    }
+  }
+
+  updateEntry = (entry) => {
+    return () => {
+      entryService
+        .update(entry)
+        .then(updatedEntry => {
+          this.setState({
+            entries: this.state.entries.map(entry => entry.id !== updatedEntry.id ? entry : updatedEntry),
+          })
+        })
+      }
   }
 
   render() {
@@ -79,7 +92,7 @@ class App extends React.Component {
         <h1>{this.state.showEntryType==='expense' ? 'Menot' : 'Tulot'}</h1>
         <AddEntryForm newEntryDate={this.state.newEntryDate} newEntryAmount={this.state.newEntryAmount} updateDate={this.updateDate} updateAmount={this.updateAmount} addEntry={this.addEntry} showModifyModal={this.showModifyModal} />
         <EntriesTable entries={this.state.entries} showEntryType={this.state.showEntryType} populateModifyEntryModal={this.populateModifyEntryModal} />
-        <ModifyEntryModal entryToBeModified={this.state.entryToBeModified}/>
+        <ModifyEntryModal entryToBeModified={this.state.entryToBeModified} updateEntry={this.updateEntry}/>
       </div>
     )
   }
