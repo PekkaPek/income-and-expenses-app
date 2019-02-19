@@ -1,10 +1,10 @@
 import React from 'react'
 
-const ModifyEntryModal = ({entryToBeModified, updateEntry}) => {
+const ModifyEntryModal = ({entryToBeModified, updateEntry, updateEntryToBeModifiedDate, updateEntryToBeModifiedAmount}) => {
   return(
     <div>
-      <input value={entryToBeModified.date}/>
-      <input value={entryToBeModified.amount}/>
+      <input value={entryToBeModified.date} onChange={updateEntryToBeModifiedDate}/>
+      <input value={entryToBeModified.amount} onChange={updateEntryToBeModifiedAmount}/>
       <input type="submit" value="Muokkaa" onClick={updateEntry(entryToBeModified)}/>
     </div>
   )

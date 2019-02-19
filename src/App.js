@@ -15,7 +15,10 @@ class App extends React.Component {
       entries: [],
       newEntryDate: '',
       newEntryAmount: '',
-      entryToBeModified: {},
+      entryToBeModified: {
+        date: '',
+        amount: ''
+      },
       showModifyEntryModal: false
     }
     entryService
@@ -32,13 +35,21 @@ class App extends React.Component {
   }
 
   updateDate = (event) => {
-    console.log('event.targe.value:', event.target.value)
     this.setState({newEntryDate: event.target.value})
   }
 
   updateAmount = (event) => {
-    console.log('event.targe.value:', event.target.value)
     this.setState({newEntryAmount: event.target.value})
+  }
+
+  updateEntryToBeModifiedDate = (event) => {
+    const modifiedEntry = {...this.state.entryToBeModified, date: event.target.value}
+    this.setState({entryToBeModified: modifiedEntry})
+  }
+
+  updateEntryToBeModifiedAmount = (event) => {
+    const modifiedEntry = {...this.state.entryToBeModified, amount: event.target.value}
+    this.setState({entryToBeModified: modifiedEntry})
   }
 
   addEntry = (event) => {
@@ -88,11 +99,10 @@ class App extends React.Component {
     return (
       <div>
         <Navigation showEntryType={this.state.showEntryType} toggleShowEntryType={this.toggleShowEntryType} />
-        
         <h1>{this.state.showEntryType==='expense' ? 'Menot' : 'Tulot'}</h1>
         <AddEntryForm newEntryDate={this.state.newEntryDate} newEntryAmount={this.state.newEntryAmount} updateDate={this.updateDate} updateAmount={this.updateAmount} addEntry={this.addEntry} showModifyModal={this.showModifyModal} />
         <EntriesTable entries={this.state.entries} showEntryType={this.state.showEntryType} populateModifyEntryModal={this.populateModifyEntryModal} />
-        <ModifyEntryModal entryToBeModified={this.state.entryToBeModified} updateEntry={this.updateEntry}/>
+        <ModifyEntryModal entryToBeModified={this.state.entryToBeModified} updateEntry={this.updateEntry}updateEntryToBeModifiedDate={this.updateEntryToBeModifiedDate} updateEntryToBeModifiedAmount={this.updateEntryToBeModifiedAmount}/>
       </div>
     )
   }
