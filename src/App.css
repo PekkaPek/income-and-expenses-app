@@ -15,3 +15,11 @@ label {
   color: blueviolet;
   cursor: pointer;
 }
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}

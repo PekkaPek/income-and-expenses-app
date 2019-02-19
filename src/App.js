@@ -70,15 +70,12 @@ class App extends React.Component {
       })
   }
 
-  toggleShowModifyEntryModal = () => {
-    this.setState({showModifyEntryModal: !this.state.showModifyEntryModal})
-  }
-
   populateModifyEntryModal = (entry) => {
     return () => {
       const entryCopy = {...entry}
       this.setState({
-        entryToBeModified: entryCopy
+        entryToBeModified: entryCopy,
+        showModifyEntryModal: true
       })
     }
   }
@@ -90,6 +87,7 @@ class App extends React.Component {
         .then(updatedEntry => {
           this.setState({
             entries: this.state.entries.map(entry => entry.id !== updatedEntry.id ? entry : updatedEntry),
+            showModifyEntryModal: false
           })
         })
       }
@@ -102,7 +100,7 @@ class App extends React.Component {
         <h1>{this.state.showEntryType==='expense' ? 'Menot' : 'Tulot'}</h1>
         <AddEntryForm newEntryDate={this.state.newEntryDate} newEntryAmount={this.state.newEntryAmount} updateDate={this.updateDate} updateAmount={this.updateAmount} addEntry={this.addEntry} showModifyModal={this.showModifyModal} />
         <EntriesTable entries={this.state.entries} showEntryType={this.state.showEntryType} populateModifyEntryModal={this.populateModifyEntryModal} />
-        <ModifyEntryModal entryToBeModified={this.state.entryToBeModified} updateEntry={this.updateEntry}updateEntryToBeModifiedDate={this.updateEntryToBeModifiedDate} updateEntryToBeModifiedAmount={this.updateEntryToBeModifiedAmount}/>
+        <ModifyEntryModal showModifyEntryModal={this.state.showModifyEntryModal} entryToBeModified={this.state.entryToBeModified} updateEntry={this.updateEntry}updateEntryToBeModifiedDate={this.updateEntryToBeModifiedDate} updateEntryToBeModifiedAmount={this.updateEntryToBeModifiedAmount}/>
       </div>
     )
   }
