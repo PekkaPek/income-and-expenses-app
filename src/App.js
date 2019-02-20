@@ -93,13 +93,14 @@ class App extends React.Component {
       }
   }
 
-  deleteEntry = (entry) => {
+  deleteEntry = (entryToDelete) => {
     return () => {
       entryService
-        .deleteOne(entry)
+        .deleteOne(entryToDelete)
         .then(deletedEntry => {
+          console.log('deletedEntry:', deletedEntry)
           this.setState({
-            entries: this.state.entries.filter(entry => entry.id !== deletedEntry.id)
+            entries: this.state.entries.filter(entry => entry.id !== entryToDelete.id)
           })
         })
     }
