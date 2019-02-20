@@ -93,13 +93,25 @@ class App extends React.Component {
       }
   }
 
+  deleteEntry = (entry) => {
+    return () => {
+      entryService
+        .deleteOne(entry)
+        .then(deletedEntry => {
+          this.setState({
+            entries: this.state.entries.filter(entry => entry.id !== deletedEntry.id)
+          })
+        })
+    }
+  }
+
   render() {
     return (
       <div>
         <Navigation showEntryType={this.state.showEntryType} toggleShowEntryType={this.toggleShowEntryType} />
         <h1>{this.state.showEntryType==='expense' ? 'Menot' : 'Tulot'}</h1>
         <AddEntryForm newEntryDate={this.state.newEntryDate} newEntryAmount={this.state.newEntryAmount} updateDate={this.updateDate} updateAmount={this.updateAmount} addEntry={this.addEntry} showModifyModal={this.showModifyModal} />
-        <EntriesTable entries={this.state.entries} showEntryType={this.state.showEntryType} populateModifyEntryModal={this.populateModifyEntryModal} />
+        <EntriesTable entries={this.state.entries} showEntryType={this.state.showEntryType} populateModifyEntryModal={this.populateModifyEntryModal} deleteEntry={this.deleteEntry}/>
         <ModifyEntryModal showModifyEntryModal={this.state.showModifyEntryModal} entryToBeModified={this.state.entryToBeModified} updateEntry={this.updateEntry}updateEntryToBeModifiedDate={this.updateEntryToBeModifiedDate} updateEntryToBeModifiedAmount={this.updateEntryToBeModifiedAmount}/>
       </div>
     )

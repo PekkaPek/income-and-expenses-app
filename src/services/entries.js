@@ -20,4 +20,13 @@ const update = (entryToBeUpdated) => {
   })
 }
 
-export default {getAll, create, update}
+const deleteOne = (entryToBeDeleted) => {
+  console.log('text print:', entryToBeDeleted)
+  const request = axios.delete(`${baseUrl}/${entryToBeDeleted.id}`)
+  return request.then(response => {
+    console.log('response:', response)
+    return response.data
+  })
+}
+
+export default {getAll, create, update, deleteOne}
