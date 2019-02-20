@@ -57,7 +57,7 @@ class App extends React.Component {
     const newEntry = {
       type: this.state.showEntryType,
       date: this.state.newEntryDate,
-      amount: this.state.newEntryAmount
+      amount: Number(this.state.newEntryAmount.replace(',','.'))
     }
     entryService
       .create(newEntry)
