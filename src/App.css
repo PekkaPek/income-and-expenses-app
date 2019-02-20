@@ -6,6 +6,10 @@ label {
   display: block;
 }
 
+td {
+  width: 20%;
+}
+
 .link {
   color: blue;
   text-decoration: underline;
