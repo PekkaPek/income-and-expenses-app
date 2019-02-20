@@ -3,7 +3,7 @@ import React from 'react'
 const EntriesTable = ( {entries, showEntryType, populateModifyEntryModal, deleteEntry} ) => {
   const entriesToShow = entries.filter(entry => entry.type===showEntryType)
   const addAmount = (sum, entry) => {
-    return sum + Number(entry.amount)
+    return sum + entry.amount
   }
   return(
     <div>
