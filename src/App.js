@@ -82,8 +82,10 @@ class App extends React.Component {
 
   updateEntry = (entry) => {
     return () => {
+      const amountNumber = Number(entry.amount.replace(',', '.'))
+      const entryWithAmountNumber = {...entry, amount: amountNumber}
       entryService
-        .update(entry)
+        .update(entryWithAmountNumber)
         .then(updatedEntry => {
           this.setState({
             entries: this.state.entries.map(entry => entry.id !== updatedEntry.id ? entry : updatedEntry),
