@@ -13,7 +13,7 @@ const create = (newEntry) => {
 
 const update = (entryToBeUpdated) => {
   console.log('entryToBeUpdated:', entryToBeUpdated)
-  const request = axios.put(`${baseUrl}/${entryToBeUpdated.id}`, entryToBeUpdated)
+  const request = axios.put(baseUrl, entryToBeUpdated)
   return request.then(response => {
     console.log('response:', response)
     return response.data
