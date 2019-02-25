@@ -82,7 +82,12 @@ class App extends React.Component {
 
   updateEntry = (entry) => {
     return () => {
-      const amountNumber = Number(entry.amount.replace(',', '.'))
+      let amountNumber = 0;
+      if (typeof entry.amount === "string") {
+        amountNumber = Number(entry.amount.replace(',', '.'))
+      } else {
+        amountNumber = entry.amount
+      }
       const entryWithAmountNumber = {...entry, amount: amountNumber}
       entryService
         .update(entryWithAmountNumber)
