@@ -1,8 +1,15 @@
 import axios from 'axios'
 const baseUrl = 'http://localhost:3002/api/entries'
 
-const getAll = () => {
-  const request = axios.get(baseUrl)
+const getAll = (year, month) => {
+  var request
+  console.log('year:', year)
+  console.log('month:', month)
+  if (year && month !== undefined) {
+    request = axios.get(baseUrl + "?y=" + year + "&m=" + month)
+  } else {
+    request = axios.get(baseUrl)
+  }
   return request.then(response => response.data)
 }
 
