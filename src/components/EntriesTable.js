@@ -17,7 +17,7 @@ const EntriesTable = ( {entries, showEntryType, populateModifyEntryModal, delete
         {showEntryType === 'expense' ? 'Menoja' : 'Tuloja'} yhteensä {entriesToShow.reduce(addAmount, 0).toLocaleString()} €
       </div>
       <div>
-        {entriesToShow.length} tapahtumaa
+        {entriesToShow.length} {entriesToShow.length === 1 ? ' tapahtuma' : 'tapahtumaa'}
       </div>
     </div>
   )
