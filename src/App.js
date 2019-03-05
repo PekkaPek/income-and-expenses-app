@@ -5,6 +5,7 @@ import './App.css'
 import Navigation from './components/Navigation'
 import AddEntryForm from './components/AddEntryForm';
 import MonthSelector from './components/MonthSelector'
+import IncomeExpenseSummary from './components/IncomeExpenseSummary'
 import EntriesTable from './components/EntriesTable';
 import ModifyEntryModal from './components/ModifyEntryModal'
 
@@ -146,6 +147,7 @@ class App extends React.Component {
         <h1>{this.state.showEntryType==='expense' ? 'Menot' : 'Tulot'}</h1>
         <AddEntryForm newEntryDate={this.state.newEntryDate} newEntryAmount={this.state.newEntryAmount} updateDate={this.updateDate} updateAmount={this.updateAmount} addEntry={this.addEntry} showModifyModal={this.showModifyModal} />
         <MonthSelector viewPeriod={this.state.viewPeriod} getPreviousMonth={this.getPreviousMonth} getNextMonth={this.getNextMonth}/>
+        <IncomeExpenseSummary entries={this.state.entries}/>
         <EntriesTable entries={this.state.entries} showEntryType={this.state.showEntryType} populateModifyEntryModal={this.populateModifyEntryModal} deleteEntry={this.deleteEntry}/>
         <ModifyEntryModal showModifyEntryModal={this.state.showModifyEntryModal} entryToBeModified={this.state.entryToBeModified} updateEntry={this.updateEntry}updateEntryToBeModifiedDate={this.updateEntryToBeModifiedDate} updateEntryToBeModifiedAmount={this.updateEntryToBeModifiedAmount}/>
       </div>
