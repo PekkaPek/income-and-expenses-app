@@ -92,8 +92,12 @@ class App extends React.Component {
     entryService
       .create(newEntry)
       .then(createdEntry => {
+        let entries = this.state.entries
+        if (new Date(createdEntry.date).getMonth() === this.state.viewPeriod.getMonth()) {
+          entries = this.state.entries.concat(createdEntry).sort(sortByDate)
+        }
         this.setState({
-          entries: this.state.entries.concat(createdEntry).sort(sortByDate),
+          entries,
           newEntryDate: '',
           newEntryAmount: ''
         })
