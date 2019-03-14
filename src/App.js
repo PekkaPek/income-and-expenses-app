@@ -86,11 +86,14 @@ class App extends React.Component {
       date: this.state.newEntryDate,
       amount: Number(this.state.newEntryAmount.replace(',','.'))
     }
+    const sortByDate = (a, b) => {
+      return new Date(a.date) - new Date(b.date)
+    }
     entryService
       .create(newEntry)
       .then(createdEntry => {
         this.setState({
-          entries: this.state.entries.concat(createdEntry),
+          entries: this.state.entries.concat(createdEntry).sort(sortByDate),
           newEntryDate: '',
           newEntryAmount: ''
         })
