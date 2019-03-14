@@ -20,7 +20,7 @@ const create = (newEntry) => {
 
 const update = (entryToBeUpdated) => {
   console.log('entryToBeUpdated:', entryToBeUpdated)
-  const request = axios.put(baseUrl, entryToBeUpdated)
+  const request = axios.patch(baseUrl, entryToBeUpdated)
   return request.then(response => {
     console.log('response:', response)
     return response.data
