@@ -141,7 +141,7 @@ class App extends React.Component {
         .then(deletedEntry => {
           console.log('deletedEntry:', deletedEntry)
           this.setState({
-            entries: this.state.entries.filter(entry => entry.id !== entryToDelete.id)
+            entries: this.state.entries.filter(entry => entry.id !== deletedEntry.id)
           })
         })
     }
