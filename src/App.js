@@ -8,6 +8,7 @@ import MonthSelector from './components/MonthSelector'
 import IncomeExpenseSummary from './components/IncomeExpenseSummary'
 import EntriesTable from './components/EntriesTable';
 import ModifyEntryModal from './components/ModifyEntryModal'
+import helpers from './utils/helpers'
 
 class App extends React.Component {
   constructor(props) {
@@ -86,15 +87,12 @@ class App extends React.Component {
       date: this.state.newEntryDate,
       amount: Number(this.state.newEntryAmount.replace(',','.'))
     }
-    const sortByDate = (a, b) => {
-      return new Date(a.date) - new Date(b.date)
-    }
     entryService
       .create(newEntry)
       .then(createdEntry => {
         let entries = this.state.entries
         if (new Date(createdEntry.date).getMonth() === this.state.viewPeriod.getMonth()) {
-          entries = this.state.entries.concat(createdEntry).sort(sortByDate)
+          entries = this.state.entries.concat(createdEntry).sort(helpers.sortByDate)
         }
         this.setState({
           entries,
@@ -123,15 +121,12 @@ class App extends React.Component {
         amountNumber = entry.amount
       }
       const entryWithAmountNumber = {...entry, amount: amountNumber}
-      const sortByDate = (a, b) => {
-        return new Date(a.date) - new Date(b.date)
-      } 
       entryService
         .update(entryWithAmountNumber)
         .then(updatedEntry => {
           let entries = this.state.entries
           if (new Date(updatedEntry.date).getMonth() === this.state.viewPeriod.getMonth()) {
-            entries = entries.map(entry => entry.id !== updatedEntry.id ? entry : updatedEntry).sort(sortByDate)
+            entries = entries.map(entry => entry.id !== updatedEntry.id ? entry : updatedEntry).sort(helpers.sortByDate)
           } else {
             entries = entries.filter(entry => entry.id !== updatedEntry.id)
           }
