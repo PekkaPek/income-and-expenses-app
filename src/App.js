@@ -123,11 +123,20 @@ class App extends React.Component {
         amountNumber = entry.amount
       }
       const entryWithAmountNumber = {...entry, amount: amountNumber}
+      const sortByDate = (a, b) => {
+        return new Date(a.date) - new Date(b.date)
+      } 
       entryService
         .update(entryWithAmountNumber)
         .then(updatedEntry => {
+          let entries = this.state.entries
+          if (new Date(updatedEntry.date).getMonth() === this.state.viewPeriod.getMonth()) {
+            entries = entries.map(entry => entry.id !== updatedEntry.id ? entry : updatedEntry).sort(sortByDate)
+          } else {
+            entries = entries.filter(entry => entry.id !== updatedEntry.id)
+          }
           this.setState({
-            entries: this.state.entries.map(entry => entry.id !== updatedEntry.id ? entry : updatedEntry),
+            entries,
             showModifyEntryModal: false
           })
         })
