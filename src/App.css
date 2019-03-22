@@ -13,10 +13,13 @@ nav {
   margin-right: 10px;
 }
 
+.content-container {
+  margin: 30px 10% 0 10%;
+}
+
 h1 {
   font-size: 53px;
   text-align: center;
-  margin-top: 15px;
 }
 
 .form--short-entities-container {
@@ -25,6 +28,10 @@ h1 {
 
 .form--short-entity {
   margin: 10px 10px;
+}
+
+.form--short-entity:first-of-type {
+  margin-left: 0;
 }
 
 .form--submit-container {
@@ -37,7 +44,6 @@ h1 {
   border: 1px solid black;
   background-color: white;
   padding: 4px 10px;
-  margin-right: 60px;
 }
 
 label {
