@@ -2,17 +2,16 @@ import React from 'react'
 
 const AddEntryForm = ({showEntryType, toggleShowEntryType, newEntryDate, newEntryAmount, updateDate, updateAmount, addEntry}) => {
   return (
-    <div className="form--form-container">
-      <div className="form--advice-container">
-        <div className="form--advice-title">
-        Lisää {showEntryType==='expense' ? 'meno' : 'tulo'}
-        </div>
-        <div className="form--advice-text">
-          <p>Vapaaehtoiset kentät on merkattu.</p>
-          <p>{showEntryType==='expense' ? 'Tulon' : 'Menon'} voi lisätä <span className="link" onClick={toggleShowEntryType}>{showEntryType==='expense' ? 'tulo' : 'meno'}näkymästä</span>.</p>
-        </div>
-      </div>
       <form className="form--add-entry" onSubmit={addEntry}>
+        <div className="form--advice-container">
+          <div className="form--advice-title">
+          Lisää {showEntryType==='expense' ? 'meno' : 'tulo'}
+          </div>
+          <div className="form--advice-text">
+            <p>Vapaaehtoiset kentät on merkattu.</p>
+            <p>{showEntryType==='expense' ? 'Tulon' : 'Menon'} voi lisätä <span className="link" onClick={toggleShowEntryType}>{showEntryType==='expense' ? 'tulo' : 'meno'}näkymästä</span>.</p>
+          </div>
+        </div>
         <div className="form--short-entities-container">
           <div className="form--short-entity">
             <label>Päivämäärä</label>
@@ -27,7 +26,6 @@ const AddEntryForm = ({showEntryType, toggleShowEntryType, newEntryDate, newEntr
           <input className="form--submit" type="submit" value="+ Lisää"></input>
         </div>
       </form>
-    </div>
   )
 }
 
