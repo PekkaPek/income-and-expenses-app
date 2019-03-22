@@ -14,7 +14,9 @@ nav {
 }
 
 h1 {
+  font-size: 53px;
   text-align: center;
+  margin-top: 15px;
 }
 
 label {
