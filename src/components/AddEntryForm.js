@@ -3,11 +3,11 @@ import React from 'react'
 const AddEntryForm = ({showEntryType, toggleShowEntryType, newEntryDate, newEntryAmount, updateDate, updateAmount, addEntry}) => {
   return (
       <form className="form--add-entry" onSubmit={addEntry}>
-        <div className="form--advice-container">
-          <div className="form--advice-title">
+        <div className="advice-container">
+          <div className="advice-title">
           Lisää {showEntryType==='expense' ? 'meno' : 'tulo'}
           </div>
-          <div className="form--advice-text">
+          <div className="advice-text">
             <p>Vapaaehtoiset kentät on merkattu.</p>
             <p>{showEntryType==='expense' ? 'Tulon' : 'Menon'} voi lisätä <span className="link" onClick={toggleShowEntryType}>{showEntryType==='expense' ? 'tulo' : 'meno'}näkymästä</span>.</p>
           </div>
