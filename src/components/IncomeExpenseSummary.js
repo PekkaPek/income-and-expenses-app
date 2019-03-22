@@ -9,7 +9,7 @@ const IncomeExpenseSummary = ({entries}) => {
     }
   }
   return(
-    <div>
+    <div className="advice-text income-expense-summary--text">
       Tuloja ja menoja yhteensä:
       {entries.reduce(getSum, 0) > 0 ? ' +' : ' '}
       {entries.reduce(getSum, 0).toLocaleString()} €

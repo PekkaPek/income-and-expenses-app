@@ -1,12 +1,20 @@
 import React from 'react'
 
-const MonthSelector = ({viewPeriod, getPreviousMonth, getNextMonth}) => {
+const MonthSelector = ({showEntryType, viewPeriod, getPreviousMonth, getNextMonth}) => {
   const monthNames = ['Tammikuu', 'Helmikuu', 'Maaliskuu', 'Huhtikuu', 'Toukokuu', 'Kesäkuu', 'Heinäkuu', 'Elokuu', 'Syyskuu', 'Lokakuu', 'Marraskuu', 'Joulukuu']
   return (
-    <div>
-      <button type="button" onClick={getPreviousMonth}>&lt;</button>
+    <div className="month-selector--container">
+      <div className="advice-container">
+        <div className="advice-title">
+          Tarkastele {showEntryType==='expense' ? 'menoja' : 'tuloja'}
+        </div>
+        <div className="advice-text">
+          Valitse tarkasteltava kuukausi
+        </div>
+      </div>
+      <button type="button" className="month-selector--button link" onClick={getPreviousMonth}>&lt;</button>
       {monthNames[viewPeriod.getMonth()]} {viewPeriod.getFullYear()}
-      <button type="button" onClick={getNextMonth}>&gt;</button>
+      <button type="button" className="month-selector--button link" onClick={getNextMonth}>&gt;</button>
     </div>
   )
 }
