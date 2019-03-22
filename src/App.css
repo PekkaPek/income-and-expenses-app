@@ -20,6 +20,22 @@ nav {
 h1 {
   font-size: 53px;
   text-align: center;
+  margin-bottom: 25px;
+}
+
+.form--advice-container {
+  margin-bottom: 10px;
+}
+
+.form--advice-title {
+  font-weight: bold;
+  font-size: 17px;
+  margin-bottom: 4px;
+}
+
+.form--advice-text {
+  font-size: 13px;
+  color: #262626;
 }
 
 .form--short-entities-container {
@@ -27,7 +43,7 @@ h1 {
 }
 
 .form--short-entity {
-  margin: 10px 10px;
+  margin: 0 10px 10px;
 }
 
 .form--short-entity:first-of-type {
