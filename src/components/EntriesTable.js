@@ -5,19 +5,35 @@ const EntriesTable = ( {entries, showEntryType, populateModifyEntryModal, delete
   const addAmount = (sum, entry) => {
     return sum + entry.amount
   }
+  const createEntryRows = (entryRows, entry) => {
+    return(
+    entryRows.concat(
+      <tr key={entry.id}>
+        <td className={entryRows.length!==0 && entryRows[entryRows.length - 1].props.children[0].props.children!==new Date(entry.date).toLocaleDateString() ? 'entries-table--date-cell entries-table--first-entry-of-day' : 'entries-table--date-cell entries-table--same-day-entry'}>{new Date(entry.date).toLocaleDateString()}</td>
+        <td className="entries-table--number-cell">{entry.amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €</td>
+        <td className="link entries-table--action-cell" onClick={deleteEntry(entry)}>Poista</td>
+        <td className="link entries-table--action-cell" onClick={populateModifyEntryModal(entry)}>Muokkaa</td>
+      </tr>
+    ))
+  }
   return(
     <div>
-      <table>
+      <table className="entries-table--table">
       <tbody>
-        <tr><th>Päivämäärä</th><th>Summa</th></tr>
-        {entriesToShow.map(entry => <tr key={entry.id}><td>{new Date(entry.date).toLocaleDateString()}</td><td>{entry.amount.toLocaleString()} €</td><td className="link" onClick={deleteEntry(entry)}>Poista</td><td className="link" onClick={populateModifyEntryModal(entry)}>Muokkaa</td></tr>)}
+        <tr className="entries-table--header-row">
+          <th className="entries-table--date-cell">Päivämäärä</th>
+          <th className="entries-table--number-cell">Summa</th>
+        </tr>
+        {entriesToShow.reduce(createEntryRows, [])}
       </tbody>
       </table>
-      <div>
-        {showEntryType === 'expense' ? 'Menoja' : 'Tuloja'} yhteensä {entriesToShow.reduce(addAmount, 0).toLocaleString()} €
-      </div>
-      <div>
-        {entriesToShow.length} {entriesToShow.length === 1 ? ' tapahtuma' : 'tapahtumaa'}
+      <div className="advice-text">
+        <p>
+          {showEntryType === 'expense' ? 'Menoja' : 'Tuloja'} yhteensä {entriesToShow.reduce(addAmount, 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €
+        </p>
+        <p>
+          {entriesToShow.length} {entriesToShow.length === 1 ? ' tapahtuma' : 'tapahtumaa'}
+        </p>
       </div>
     </div>
   )

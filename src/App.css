@@ -62,6 +62,10 @@ h1 {
   margin-left: 0;
 }
 
+label {
+  display: block;
+}
+
 .form--submit-container {
   display: flex;
   justify-content: flex-end;
@@ -88,12 +92,43 @@ h1 {
   margin-bottom: 10px;
 }
 
-label {
-  display: block;
+.entries-table--table {
+  margin-bottom: 5px;
+}
+
+.entries-table--header-row {
+  border-bottom: 1px solid lightgray;
 }
 
 td {
+  padding-bottom: 3px;
+}
+
+.entries-table--date-cell {
+  text-align: right;
+  width: 0.1%;
+}
+
+tr:nth-child(2) .entries-table--date-cell {
+  padding-top: 5px;
+}
+
+.entries-table--number-cell {
+  text-align: right;
   width: 20%;
+}
+
+.entries-table--action-cell {
+  text-align: center;
+  width: 20%;
+}
+
+.entries-table--first-entry-of-day {
+  padding-top: 7px;
+}
+
+tr:not(:nth-child(2)) .entries-table--same-day-entry {
+  color: white;
 }
 
 .show {
