@@ -23,7 +23,7 @@ const AddEntryForm = ({showEntryType, toggleShowEntryType, newEntryDate, newEntr
           </div>
         </div>
         <div className="form--submit-container">
-          <input className="form--submit" type="submit" value="+ Lisää"></input>
+          <input className="form--submit link" type="submit" value="+ Lisää"></input>
         </div>
       </form>
   )

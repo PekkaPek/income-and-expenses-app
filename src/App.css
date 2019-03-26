@@ -72,10 +72,9 @@ label {
 }
 
 .form--submit {
-  font-size: 14px;
-  border: 1px solid black;
+  font-size: 17px;
+  border: none;
   background-color: white;
-  padding: 4px 10px;
 }
 
 .month-selector--container {
