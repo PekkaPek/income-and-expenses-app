@@ -112,6 +112,12 @@ class App extends React.Component {
     }
   }
 
+  hideModifyEntryModal = () => {
+    this.setState({
+      showModifyEntryModal: false
+    })
+  }
+
   updateEntry = (entry) => {
     return () => {
       let amountNumber = 0;
@@ -161,7 +167,7 @@ class App extends React.Component {
           <MonthSelector showEntryType={this.state.showEntryType} viewPeriod={this.state.viewPeriod} getPreviousMonth={this.getPreviousMonth} getNextMonth={this.getNextMonth}/>
           <IncomeExpenseSummary entries={this.state.entries}/>
           <EntriesTable entries={this.state.entries} showEntryType={this.state.showEntryType} populateModifyEntryModal={this.populateModifyEntryModal} deleteEntry={this.deleteEntry}/>
-          <ModifyEntryModal showModifyEntryModal={this.state.showModifyEntryModal} entryToBeModified={this.state.entryToBeModified} updateEntry={this.updateEntry}updateEntryToBeModifiedDate={this.updateEntryToBeModifiedDate} updateEntryToBeModifiedAmount={this.updateEntryToBeModifiedAmount}/>
+          <ModifyEntryModal showModifyEntryModal={this.state.showModifyEntryModal} hideModifyEntryModal={this.hideModifyEntryModal} entryToBeModified={this.state.entryToBeModified} updateEntry={this.updateEntry}updateEntryToBeModifiedDate={this.updateEntryToBeModifiedDate} updateEntryToBeModifiedAmount={this.updateEntryToBeModifiedAmount}/>
         </div>
       </div>
     )

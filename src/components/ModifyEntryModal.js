@@ -1,9 +1,9 @@
 import React from 'react'
 
-const ModifyEntryModal = ({showModifyEntryModal, entryToBeModified, updateEntry, updateEntryToBeModifiedDate, updateEntryToBeModifiedAmount}) => {
+const ModifyEntryModal = ({showModifyEntryModal, hideModifyEntryModal, entryToBeModified, updateEntry, updateEntryToBeModifiedDate, updateEntryToBeModifiedAmount}) => {
   return(
     <div className={showModifyEntryModal ? 'modify-entry-modal--container show' : 'hide'}>
-      <div className='modify-entry-modal--background'>
+      <div className='modify-entry-modal--background' onClick={hideModifyEntryModal}>
       </div>
       <div className='modify-entry-modal--inner-container'>
         <div className='advice-title'>
@@ -20,6 +20,7 @@ const ModifyEntryModal = ({showModifyEntryModal, entryToBeModified, updateEntry,
           </div>
         </div>
         <div className="modify-entry-modal--submit-container">
+          <input className="submit-button link" type="submit" value="Peruuta" onClick={hideModifyEntryModal}/>
           <input className="submit-button link" type="submit" value="Muokkaa" onClick={updateEntry(entryToBeModified)}/>
         </div>
       </div>
