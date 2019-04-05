@@ -29,7 +29,7 @@
 }
 
 .short-field {
-  margin: 10px;
+  margin: 0 10px 10px;
 }
 
 .short-field:first-of-type {
@@ -134,6 +134,10 @@ tr:not(:nth-child(2)) .entries-table--same-day-entry {
   position: fixed;
   top: 35%;
   left: 50%;
+}
+
+.modify-entry-modal--container .short-field {
+  margin-top: 10px;
 }
 
 .modify-entry-modal--inner-container {
