@@ -1,6 +1,10 @@
 import React from 'react'
 
 const ModifyEntryModal = ({showModifyEntryModal, hideModifyEntryModal, entryToBeModified, updateEntry, updateEntryToBeModifiedDate, updateEntryToBeModifiedAmount}) => {
+  const toUTCDate = (dateString) => {
+    const date = new Date(dateString)
+    return date.getUTCFullYear() + '-' + ('0' + (date.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + date.getUTCDate()).slice(-2)
+  }
   return(
     <div className={showModifyEntryModal ? 'modify-entry-modal--container show' : 'hide'}>
       <div className='modify-entry-modal--background' onClick={hideModifyEntryModal}>
@@ -12,7 +16,7 @@ const ModifyEntryModal = ({showModifyEntryModal, hideModifyEntryModal, entryToBe
         <div className="modify-entry-modal--short-fields-container">
           <div className="modify-entry-modal--short-field">
             <label>Päivämäärä</label>
-            <input value={entryToBeModified.date} onChange={updateEntryToBeModifiedDate}/>
+            <input type='date' value={toUTCDate(entryToBeModified.date)} onChange={updateEntryToBeModifiedDate}/>
           </div>
           <div className="modify-entry-modal--short-field">
             <label>Summa</label>
