@@ -24,6 +24,18 @@
   cursor: pointer;
 }
 
+.short-fields-container {
+  display: flex;
+}
+
+.short-field {
+  margin: 10px;
+}
+
+.short-field:first-of-type {
+  margin-left: 0;
+}
+
 .submit-button {
   font-size: 17px;
   border: none;
@@ -54,18 +66,6 @@ h1 {
   font-size: 53px;
   text-align: center;
   margin-bottom: 25px;
-}
-
-.form--short-entities-container {
-  display: flex;
-}
-
-.form--short-entity {
-  margin: 0 10px 10px;
-}
-
-.form--short-entity:first-of-type {
-  margin-left: 0;
 }
 
 label {
@@ -142,18 +142,6 @@ tr:not(:nth-child(2)) .entries-table--same-day-entry {
   background: white;
   padding: 20px 10px;
   border: 1px solid black;
-}
-
-.modify-entry-modal--short-fields-container {
-  display: flex;
-}
-
-.modify-entry-modal--short-field {
-  margin: 10px;
-}
-
-.modify-entry-modal--short-field:first-of-type {
-  margin-left: 0;
 }
 
 .modify-entry-modal--submit-container {

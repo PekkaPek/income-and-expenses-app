@@ -13,12 +13,12 @@ const ModifyEntryModal = ({showModifyEntryModal, hideModifyEntryModal, entryToBe
         <div className='advice-title'>
           Muokkaa {entryToBeModified.type === 'income' ? 'tuloa' : 'menoa'}
         </div>
-        <div className="modify-entry-modal--short-fields-container">
-          <div className="modify-entry-modal--short-field">
+        <div className="short-fields-container">
+          <div className="short-field">
             <label>Päivämäärä</label>
             <input type='date' value={toUTCDate(entryToBeModified.date)} onChange={updateEntryToBeModifiedDate}/>
           </div>
-          <div className="modify-entry-modal--short-field">
+          <div className="short-field">
             <label>Summa</label>
             <input value={entryToBeModified.amount} onChange={updateEntryToBeModifiedAmount}/>
           </div>

@@ -12,12 +12,12 @@ const AddEntryForm = ({showEntryType, toggleShowEntryType, newEntryDate, newEntr
             <p>{showEntryType==='expense' ? 'Tulon' : 'Menon'} voi lisätä <span className="link" onClick={toggleShowEntryType}>{showEntryType==='expense' ? 'tulo' : 'meno'}näkymästä</span>.</p>
           </div>
         </div>
-        <div className="form--short-entities-container">
-          <div className="form--short-entity">
+        <div className="short-fields-container">
+          <div className="short-field">
             <label>Päivämäärä</label>
             <input type="date" value={newEntryDate} onChange={updateDate}></input>
           </div>
-          <div className="form--short-entity">
+          <div className="short-field">
             <label>Summa</label>
             <input type="text" value={newEntryAmount} onChange={updateAmount}></input>
           </div>
