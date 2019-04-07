@@ -2,8 +2,7 @@ import React from 'react'
 
 const ModifyEntryModal = ({showModifyEntryModal, hideModifyEntryModal, entryToBeModified, updateEntry, updateEntryToBeModifiedDate, updateEntryToBeModifiedAmount}) => {
   const toUTCDate = (dateString) => {
-    const date = new Date(dateString)
-    return date.getUTCFullYear() + '-' + ('0' + (date.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + date.getUTCDate()).slice(-2)
+    return dateString.substring(0, 10)
   }
   return(
     <div className={showModifyEntryModal ? 'modify-entry-modal--container show' : 'hide'}>
