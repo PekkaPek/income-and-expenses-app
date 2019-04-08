@@ -3,10 +3,10 @@ import entryService from './services/entries'
 import './reset.css'
 import './App.css'
 import Navigation from './components/Navigation'
-import AddEntryForm from './components/AddEntryForm';
+import AddEntryForm from './components/AddEntryForm'
 import MonthSelector from './components/MonthSelector'
 import IncomeExpenseSummary from './components/IncomeExpenseSummary'
-import EntriesTable from './components/EntriesTable';
+import EntriesTable from './components/EntriesTable'
 import ModifyEntryModal from './components/ModifyEntryModal'
 import helpers from './utils/helpers'
 
